@@ -1,19 +1,19 @@
 # main.tf
 
 provider "aws" {
-  region = "ap-south-1" # Replace with your preferred region
+  region = "us-east-1" # Replace with your preferred region
 }
 
 # Launch Template
 resource "aws_launch_template" "example" {
   name_prefix          = "example-"
-  image_id             = "ami-0dee22c13ea7a9a67" # Replace with your AMI ID
+  image_id             = "ami-005fc0f236362e99f" # Replace with your AMI ID
   instance_type        = "t2.micro"
-  key_name             = "aneesh" # Replace with your SSH key
+  key_name             = "awsmachine" # Replace with your SSH key
 
   network_interfaces {
     associate_public_ip_address = true
-    security_groups             = ["sg-0d135dbd11e729625"] # Replace with your security group
+    security_groups             = ["sg-0064424eca7f75a92"] # Replace with your security group
   }
 }
 
@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "example" {
   min_size         = var.min_size
   max_size         = var.max_size
   desired_capacity = var.desired_capacity
-  vpc_zone_identifier = ["subnet-0c95fe84b2722255b"] # Replace with your subnet ID
+  vpc_zone_identifier = ["subnet-055a8b61471358e15"] # Replace with your subnet ID
 
   tag {
     key                 = "Name"
