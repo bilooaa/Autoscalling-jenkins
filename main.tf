@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 # Launch Template
-resource "aws_launch_template" "example" {
+resource "aws_launch_template" "autoscalling" {
   name_prefix          = "example-"
   image_id             = "ami-005fc0f236362e99f" # Replace with your AMI ID
   instance_type        = "t2.micro"
@@ -20,7 +20,7 @@ resource "aws_launch_template" "example" {
 # Auto Scaling Group
 resource "aws_autoscaling_group" "example" {
   launch_template {
-    id      = aws_launch_template.example.id
+    id      = aws_launch_template.autoscalling.id
     version = "$Latest"
   }
 
